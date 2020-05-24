@@ -1,0 +1,40 @@
+
+
+SELECT COUNT(*) as "entries africa"
+FROM countries
+WHERE continent LIKE "Africa";
+
+SELECT SUM(population) as "total popu Africa"
+FROM population_years
+JOIN countries
+  ON population_years.id = countries.id
+WHERE continent LIKE "Oceania";
+
+SELECT AVG(population) as "avg popu South America"
+FROM population_years
+JOIN countries
+  ON population_years.id = countries.id
+WHERE continent LIKE "South America";
+
+SELECT MIN(population) as "min popu", name
+FROM population_years
+JOIN countries
+  ON population_years.id = countries.id
+WHERE year = 2007;
+
+SELECT AVG(population) as "avg popu", countries.name
+FROM population_years
+JOIN countries
+  ON population_years.id = countries.id 
+WHERE name LIKE "Poland"
+GROUP BY countries.name;
+
+SELECT COUNT(name) as "name with THE"
+FROM countries
+WHERE name LIKE "%The%";
+
+SELECT countries.name as "name", population_years.population as "popu"
+FROM population_years
+JOIN countries
+  ON population_years.id = countries.id
+WHERE population_years.year = 2010;
